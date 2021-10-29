@@ -7,7 +7,7 @@ module.exports = {
   output: {
     filename: 'index.js',
     publicPath: '/',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'public'),
   },
   devtool: 'source-map',
   plugins: [
@@ -16,7 +16,7 @@ module.exports = {
     }),
   ],
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
+    contentBase: path.join(__dirname, 'public'),
     compress: true,
     historyApiFallback: true,
     port: 3000,

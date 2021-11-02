@@ -1,4 +1,5 @@
 import React from 'react';
+import ContactForm from './components/ContactForm';
 
 const App = () => {
   return (
@@ -7,7 +8,7 @@ const App = () => {
         <a className="navbar-brand" href="#">Integration Testing Challenge</a>
       </nav>
       <div className="App">
-        {/* <ContactForm /> */}
+        <ContactForm />
       </div>
     </div>
   )

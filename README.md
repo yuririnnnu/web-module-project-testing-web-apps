@@ -1,14 +1,23 @@
-# Module Project: Deploying Web Apps - Portfolio Piece
+# Integration Testing React Module Project : Contact Form - Testing
 
-In this module you will use what you've learned about deploying a web application, and deploy one of the apps you've built so that you can add it to your portfolio page.
+This module explored the basics of the react-testing library and ideas behind the integration testing methodology. In this project you will practice how to build tests that follow the arrange-act-assert model, different methods of querying for DOM elements in a test, the use of different expect types and using async/await to test for changes in state.
 
+## Testing Web Applications
 
 ## Objectives
-- Build a simple static application
-- Use vercel to deploy
+
+- explain what automated testing is and its importance
+- use react-testing-library for testing react components
+- use react-testing-library to test user interactions with userEvent
+- use async / await and waitFor to test changes in a components state.
 
 ## Introduction
-Think about which project you are most proud of up to this point that you have built from the ground up or consider designing a small new project. ***Do your best to rebuild that project within THIS repository***
+
+In this challenge, you will be writing tests for a contact form that has been built with React.
+
+As a developer, you will be writing tests for every component. As we've learned, tests are a very important part of programming. The tests you will write will help you feel confident in the code you push to production!
+
+![Contact Example](project-goals.gif)
 
 ***Make sure to complete your tasks one at a time and complete test each task before proceding forward.***
 
@@ -16,49 +25,34 @@ Think about which project you are most proud of up to this point that you have b
 ### Task 1: Project Set Up
 * [ ] Create a forked copy of this project.
 * [ ] Clone your OWN version of the repository in your terminal
-* [ ] cd into the project base directory `cd web-module-project-lifecycle`
+* [ ] cd into the project base directory `cd web-module-project-reducer-pattern`
 * [ ] Download project dependencies by running `npm install`
 * [ ] Start up the app using `npm start`
+- [ ] In a new terminal window, run `npm test`
+- [ ] With each saved change in your editor, the test runner will re-run all the tests
+- [ ] **IMPORTANT** If a test fails, use the test runner's error messages to find out why it is failing
 
 ### Task 2: Project Requirements
-#### Build your DOM
-> *Creating the DOM for your application base on your template and data*
-* [ ] Take a look at the [included mockup](./card_mockup.png).
-* [ ] Use your browser to take a look at the data returned when using the following endpoints: https://api.github.com/users/<Your github name> and https://api.github.com/users/<Your github name>/followers
-* [ ] Using these three pieces of information, build the DOM necessary to display all application information.
-* [ ] Make use of the User.js (for holding all user information), FollowerList.js (for map through a followers list) and Follower.js (for displaying an individual follower) components to efficiently distribute your code. ***All components should be class based for this assignment.***
-* [ ] Feel free to leave the search form within App.js.
-* [ ] Lightly style as needed.
-* [ ] Commit all changes before proceeding.
+> *All of the work you will do today will be contained inside the ContactForm.test.js file. You will be tasked to write the code for at least 9 different tests on various parts of the ContactForm component. Please read the instructions for each test carefully.*
 
-#### Add in your state
-> *Now that we have all the DOM necessary to run our application, let's proceed to building in our state*
-* [ ] In App.js, add in state. Include a slice for state for:
-    - A string defining the user we are currently searching for
-    - An object containing all user information
-    - The array of all followers
-* [ ] Using our two github endpoints as a base, add your github user name, as well as test data for the user object and followers array to insure it is connected correctly.
-* [ ] Connect make sure that the test data within state correct displays within your User, FollowerList and Follower components.
+#### Test Brainstorming
+* [ ] Run and play around with the form interface.
+* [ ] Write out a list of possible testcases for this application within Understanding-questions.md.
 
-#### Load in the user and follower on mount
-> *We can now do our api calls to get our initial data*
-* [ ] Make our user object and follower list state empty by default.
-* [ ] Keep our searched user state your github username by default.
-* [ ] Use componentDidMount to load initial user data for your github name into state.
-* [ ] Use componentDidUpdate to load follower information ***only when the user slice of state changes value. Make be careful to avoid infinite loops while building this portion.***
+#### Complete a case that tests if:
+* [ ] the component renders the contact form component without errors.
+* [ ] the header h1 element exists. Include three asserts, if the header is in the document, if the heads is truthy, if the header has the correct test content.
+* [ ] the component renders ONE error message if the user enters less than 4 characters into the firstname field. Make sure to use async / await and the correct screen method to account for state change.
+* [ ] the component renders THREE error messages if the user submits without filling in any values.
+* [ ] the component renders ONE error message if the user submits without filling in the email field.
+* [ ] the component renders the text *"email must be a valid email address"* if an invalid email address is typed into the email field.
+* [ ] the component renders the text *"lastName is a required field"* the form is submitted without a last name.
+* [ ] the component renders the firstname, lastname and email text when submitted with valued fields and does **not** render a message value when one is not entered into the message field.
+* [ ] renders all fields when the user submits with valid text filled in for all fields.
 
-#### Build search capabilities within your APP
-> *Now let's allow users to search for new github usernames*
-* [ ] Connect your form in App.js so that typing into a input updated your current user state.
-* [ ] When your form is submitted, make an api call on current user. Set the returned user data to state.
-* [ ] Ensure that followers is correctly updated.
 
-### Task 3: Stretch goals
-- [ ] We are making several api calls of the same type in our code. How can we make this portion more dry?
-- [ ] Add in functionality so that when a follower is clicked, they will become the searched user. Have the UI update approprately.
-- [ ] Push your styling! Have fun!
+## Stretch goals
 
-## Submission Format
-- [ ] Only work on main.
-- [ ] Make sure to push your code at regular intervals.
-- [ ] Copy your github repo url and paste it into Canvas to submit your project
+- Look at your test cases in Understanding-questions and see if there are any that you have not completed.
+- From the this list or from your own mind, add in at least one more new testcase.
+- There is alot of state management within our component in this project! See if you can separate the form and error validation code into their own hooks.
